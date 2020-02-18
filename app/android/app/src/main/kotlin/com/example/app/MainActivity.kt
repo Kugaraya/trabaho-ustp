@@ -1,4 +1,4 @@
-package com.example.trabaho
+package com.example.app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
