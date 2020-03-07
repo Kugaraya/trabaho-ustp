@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Trabaho | Dashboard</title>
+  <title>Trabaho</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,14 +19,7 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
-
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
@@ -37,7 +30,7 @@
           </button>
         </div>
       </div>
-    </form>  
+    </form>
   </nav>
   <!-- /.navbar -->
 
@@ -57,9 +50,10 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./img/boss.png" class="img-circle elevation-2" alt="User Image">
+          <img src="img/profile/{{Auth::user()->photo}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
+          <router-link to="/profile">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
@@ -77,6 +71,7 @@
               </p>
             </router-link>
           </li>
+          @can('isSuperAdmin')
           <li class="nav-item has-treeview">
             <router-link to="/admin" class="nav-link">
               <i class="nav-icon fas fa-user-tie"></i>
@@ -85,6 +80,7 @@
               </p>
             </router-link>
           </li>
+          @endcan
           <li class="nav-item has-treeview">
             <router-link to="/company" class="nav-link">
               <i class="nav-icon fas fa-building"></i>
@@ -160,6 +156,8 @@
     <div class="content">
       <div class="container-fluid">
         <router-view></router-view>
+        
+        <vue-progress-bar></vue-progress-bar>
       </div>
     </div>
     
